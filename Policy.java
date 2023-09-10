@@ -14,12 +14,12 @@ public class Policy
           private double BMI;
           private double policyPrice;
                           
+      //body of main starts
        public static void main(String[] args)
          {
           Scanner keyboard = new Scanner(System.in);
           
-               
-       
+                  
           System.out.println("Please enter the Policy Number:");
           int policyNumber = keyboard.nextInt();
           
@@ -49,13 +49,11 @@ public class Policy
           String smokingStatus = keyboard.nextLine();
 
           Policy policy = new Policy(policyNumber, providerName, policyHolderFirstName, policyHolderLastName,
-           policyHolderAge, smokingStatus, heightInInches, weightInPounds); 
+          policyHolderAge, smokingStatus, heightInInches, weightInPounds); 
           
           policy.displayAccountInfo();
           
-          
-
- }        
+  }             
            //constructors with no arguments         
            public Policy() {                  
               this.policyNumber = 0;
