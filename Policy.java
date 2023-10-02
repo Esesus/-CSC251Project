@@ -1,6 +1,6 @@
 public class Policy
 {
-       //declare variables
+       //declaring variables
           private int policyNumber;
           private String providerName;
           private String policyHolderFirstName;
@@ -12,8 +12,7 @@ public class Policy
           private double BMI;
           private double policyPrice;
                           
-                     
-                    
+                  
                
       //constructors with no arguments         
         public Policy() {                  
@@ -49,50 +48,8 @@ public class Policy
           }         
  
    
-<<<<<<< Updated upstream
-            //getters
-            public int getPolicyNumber(){
-               return policyNumber;
-            }
-            
-            public String getProviderName(){
-               return providerName;
-            }
-      
-            public String getPolicyholderFirstName(){
-               return policyHolderFirstName;
-            }
-            
-            public String getPolicyholderLastName(){
-               return policyHolderLastName;
-            }
-                 
-            public int getPolicyholderAge(){
-               return policyHolderAge;
-            }
-      
-            public String getSmokingStatus(){
-               return smokingStatus;
-            }
-      
-            public double getHeightInInches(){
-               return heightInInches;
-            }
-      
-            public double getWeightInPounds (){
-               return weightInPounds;
-            }
-           
-            public double getBMI() {
-               return BMI =  (weightInPounds * 703 ) / (heightInInches * heightInInches);
-            }
-            
-           
-           //setters     
-=======
            //setters  
            //@param policyNumber is the policy Number  
->>>>>>> Stashed changes
            public void setPolicyNumber(int policyNumber){
                this.policyNumber = policyNumber;
            }
