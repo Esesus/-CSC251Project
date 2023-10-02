@@ -1,6 +1,6 @@
 public class Policy
 {
-       //declaring variables
+       //declare all  variables
           private int policyNumber;
           private String providerName;
           private String policyHolderFirstName;
