@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Policy
 {
        //initializing variables
@@ -14,60 +12,24 @@ public class Policy
           private double BMI;
           private double policyPrice;
                           
-      //body of main starts
-       public static void main(String[] args)
-         {
-          Scanner keyboard = new Scanner(System.in);
-          
                   
-          System.out.println("Please enter the Policy Number:");
-          int policyNumber = keyboard.nextInt();
+               
+      //constructors with no arguments         
+        public Policy() {                  
+          this.policyNumber = 0;
+          this.providerName = "";
+          this.policyHolderFirstName = "";
+          this.policyHolderLastName = "";
+          this.policyHolderAge = 0;
+          this.smokingStatus = "";
+          this.heightInInches = 0;
+          this.weightInPounds = 0;
+          this.BMI = 0;
+          this.policyPrice = 0;
+  
+        }
+           
           
-          keyboard.nextLine();
-                    
-          System.out.print("Please enter the Provider Name:");
-          String providerName = keyboard.nextLine();
-          
-          System.out.print("Please enter the Policyholder First Name:");
-          String policyHolderFirstName = keyboard.nextLine();
-          
-          System.out.print("Please enter the Policyholder Last Name:");
-          String policyHolderLastName = keyboard.nextLine();
-          
-          System.out.print("Please enter the Policyholder’s Age:");
-          int policyHolderAge = keyboard.nextInt();
-          
-          System.out.print("Please enter the Policyholder’s Height (in inches):");
-          double heightInInches = keyboard.nextDouble();
-          
-          System.out.print("Please enter the Policyholder’s Weight (in pounds):");
-          double weightInPounds = keyboard.nextDouble();
-          
-          keyboard.nextLine();
-          
-          System.out.print("Please enter the Policyholder’s Smoking Status:");
-          String smokingStatus = keyboard.nextLine();
-
-          Policy policy = new Policy(policyNumber, providerName, policyHolderFirstName, policyHolderLastName,
-          policyHolderAge, smokingStatus, heightInInches, weightInPounds); 
-          
-          policy.displayAccountInfo();
-          
-  }             
-           //constructors with no arguments         
-           public Policy() {                  
-              this.policyNumber = 0;
-              this.providerName = "";
-              this.policyHolderFirstName = "";
-              this.policyHolderLastName = "";
-              this.policyHolderAge = 0;
-              this.smokingStatus = "";
-              this.heightInInches = 0;
-              this.weightInPounds = 0;
-              this.BMI = 0;
-              this.policyPrice = 0;
-            }
-            
           //constructors with arguments
           public Policy(int policyNumber, String providerName, String policyHolderFirstName, String policyHolderLastName,
                         int policyHolderAge, String smokingStatus, double heightInInches, double weightInPounds){
@@ -81,11 +43,13 @@ public class Policy
            this.heightInInches = heightInInches;
            this.weightInPounds = weightInPounds;
            this.BMI = (weightInPounds * 703 ) / (heightInInches * heightInInches);
-           this.policyPrice = calculatePolicyPrice();
-        }         
+           this.policyPrice = getPolicyPrice();
+        
+          }         
  
    
             //getters
+            //@return is the policy number
             public int getPolicyNumber(){
                return policyNumber;
             }
@@ -123,7 +87,8 @@ public class Policy
             }
             
            
-           //setters     
+           //setters  
+           //@param policyNumber is the policy Number  
            public void setPolicyNumber(int policyNumber){
                this.policyNumber = policyNumber;
            }
@@ -155,39 +120,38 @@ public class Policy
                this.weightInPounds = weightInPounds;
            }
             
-   
-         public double calculatePolicyPrice(){
-               double baseFee = 600.0;
-               double additionalFee = 0.0;
-               double BMI = 0.0;
-          if (smokingStatus.equalsIgnoreCase("smoker")) {
-               additionalFee += 100.0; 
-             }
-          if(BMI > 35) {
-               additionalFee += (BMI-35) * 20;
-            }
-           return additionalFee + baseFee;
-           
+         //calculate policy price by definining the constants
+             public double getPolicyPrice(){
+             
+               final int age_Limit = 50;
+               final int BMI_limit = 35;
+
+               final double BASE_PRICE = 600;
+               final double ADDITIONAL_FEE_AGE = 75;
+               final double ADDITIONAL_FEE_SMOKING = 100;
+               final double ADDITIONAL_FEE_PER_BMI = 20;
+               
+
+          
+               double policyPrice = BASE_PRICE;
+               
+            //if user age is above age limit     
+              if(policyHolderAge > age_Limit) 
+              policyPrice += ADDITIONAL_FEE_AGE; 
+               
+              if(smokingStatus.equalsIgnoreCase("smoker")) 
+              policyPrice += ADDITIONAL_FEE_SMOKING; 
+            
+              //call the getBMI method
+              if(getBMI() > BMI_limit) 
+              policyPrice += ((getBMI() - BMI_limit) * ADDITIONAL_FEE_PER_BMI); 
+         
+              return policyPrice;
+     
+                  
            }   
                             
-       
-            
-     public void displayAccountInfo(){
-          
-          System.out.println("Policy Number: " + policyNumber);
-          System.out.println("Provider's Name: " + providerName);
-          System.out.println("Policyholder's first Name: " + policyHolderFirstName);
-          System.out.println("Policyholder's last name: " + policyHolderLastName);
-          System.out.println("Policyholder's age: " + policyHolderAge);
-          System.out.println("Policyholder's smoking status: " + smokingStatus);
-          System.out.println("Policyholder's height (in inches): " + heightInInches);
-          System.out.println("Policyholder's weight (in pounds): " + weightInPounds);
-          System.out.println("Policyholder's BMI: " + BMI);
-          System.out.println("Policy price: " + policyPrice);
-          
-          
-          }
-} 
+ } 
                  
       
       
