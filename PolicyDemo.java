@@ -8,7 +8,7 @@ public class PolicyDemo
       public static void main(String[] args)   throws IOException       
        {
       
-            ArrayList<Policy> policies = new ArrayList<>();
+            ArrayList<Policy> policies = new ArrayList<Policy>();
             int smokersCount = 0;
             int nonSmokersCount = 0;
           
