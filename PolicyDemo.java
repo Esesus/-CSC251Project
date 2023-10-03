@@ -3,7 +3,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-
 public class PolicyDemo
 {       
       public static void main(String[] args)   throws IOException       
@@ -17,7 +16,7 @@ public class PolicyDemo
                File file = new File("PolicyInformation.txt");
                Scanner scanner = new Scanner(file);
                String policyNumber, providerName, policyHolderFirstName, policyHolderLastName, smokingStatus;
-               double policyHolderAge, heightInInches, weightInPounds;
+               int policyHolderAge, heightInInches, weightInPounds;
                
                 while(scanner.hasNextLine()) 
                 {
@@ -49,6 +48,7 @@ public class PolicyDemo
                      System.out.println("There was a problem with the file:" + ex.getMessage());
                      return;
                }
+               
                
              for (int i = 0; i < policies.size(); i++) 
              {      
